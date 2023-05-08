@@ -27,7 +27,7 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEnti
 
     public async Task<TEntity> GetByIdAsync(int id)
     {
-        return await Context.Set<TEntity>().AsNoTracking().FirstOrDefaultAsync(e=>e.Id==id);
+        return await Context.Set<TEntity>().AsNoTracking().FirstOrDefaultAsync(e => e.Id == id);
     }
 
     public async Task<TEntity> CreateAsync(TEntity entity)
