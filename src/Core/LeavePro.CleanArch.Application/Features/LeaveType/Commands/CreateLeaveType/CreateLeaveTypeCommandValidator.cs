@@ -22,10 +22,10 @@ namespace LeavePro.CleanArch.Application.Features.LeaveType.Commands.CreateLeave
                 .MaximumLength(255).WithMessage("{PropertyName} must be fewer than 255 character");
 
             RuleFor(p => p.DefaultDays)
-                .GreaterThan(50).WithMessage("{PropertyName} cannot exceed 50")
-                .LessThan(1).WithMessage("{PropertyName} cannot be less than 1");
+                .LessThan(100).WithMessage("{PropertyName} cannot exceed 100")
+                .GreaterThan(1).WithMessage("{PropertyName} cannot be less than 1");
 
-            RuleFor(q => q)
+        RuleFor(q => q)
                 .MustAsync(LeaveTypeNameUnique)
                 .WithMessage("Leave type already exist");
         }
