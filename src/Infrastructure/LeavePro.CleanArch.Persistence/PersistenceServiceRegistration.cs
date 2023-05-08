@@ -1,4 +1,6 @@
-﻿using LeavePro.CleanArch.Persistence.DatabaseContext;
+﻿using LeavePro.CleanArch.Application.Contracts.Persistence;
+using LeavePro.CleanArch.Persistence.DatabaseContext;
+using LeavePro.CleanArch.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,6 +16,8 @@ public static class PersistenceServiceRegistration
         {
             option.UseSqlServer(configuration.GetConnectionString("LmDbConnectionString"));
         });
+
+        services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
         return services;
     }

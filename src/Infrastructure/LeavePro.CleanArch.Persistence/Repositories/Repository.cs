@@ -1,0 +1,53 @@
+﻿using LeavePro.CleanArch.Application.Contracts.Persistence;
+using LeavePro.CleanArch.Persistence.DatabaseContext;
+using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
+
+namespace LeavePro.CleanArch.Persistence.Repositories;
+
+public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+{
+    protected readonly LmDbContext Context;
+
+    public Repository(LmDbContext context)
+    {
+        Context = context;
+    }
+
+    public async Task<IReadOnlyList<TEntity>> GetAllAsync()
+    {
+        return await Context.Set<TEntity>().AsNoTracking().ToListAsync();
+    }
+
+    public async Task<IReadOnlyList<TEntity>> GetAsync(Expression<Func<TEntity, bool>> predicate)
+    {
+        return await Context.Set<TEntity>().AsNoTracking().Where(predicate).ToListAsync();
+    }
+
+    public async Task<TEntity> GetByIdAsync(int id)
+    {
+        return await Context.Set<TEntity>().FindAsync(id);
+    }
+
+    public async Task<TEntity> CreateAsync(TEntity entity)
+    {
+        await Context.AddAsync(entity);
+        await Context.SaveChangesAsync();
+
+        return entity;
+    }
+
+    public async Task<TEntity> UpdateAsync(TEntity entity)
+    {
+        Context.Update(entity);
+        await Context.SaveChangesAsync();
+
+        return entity;
+    }
+
+    public async Task DeleteAsync(TEntity entity)
+    {
+        Context.Remove(entity);
+        await Context.SaveChangesAsync();
+    }
+}
