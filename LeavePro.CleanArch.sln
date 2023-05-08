@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeavePro.CleanArch.Applicat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeavePro.CleanArch.Domain", "src\Core\LeavePro.CleanArch.Domain\LeavePro.CleanArch.Domain.csproj", "{7C6E0BD2-A5DE-4A5A-A74C-1937CB09439E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeavePro.CleanArch.Persistence", "src\Infrastructure\LeavePro.CleanArch.Persistence\LeavePro.CleanArch.Persistence.csproj", "{7B0C4246-AD82-41FD-89AB-E42211A64923}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{7C6E0BD2-A5DE-4A5A-A74C-1937CB09439E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C6E0BD2-A5DE-4A5A-A74C-1937CB09439E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C6E0BD2-A5DE-4A5A-A74C-1937CB09439E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B0C4246-AD82-41FD-89AB-E42211A64923}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B0C4246-AD82-41FD-89AB-E42211A64923}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B0C4246-AD82-41FD-89AB-E42211A64923}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B0C4246-AD82-41FD-89AB-E42211A64923}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,6 +57,7 @@ Global
 		{36C1BEBD-CC3A-41C5-B6AA-4AED04A1007C} = {67884A00-EDC6-4F06-9CEF-9643D7EE8F45}
 		{6FCA39AE-830F-4C3C-B8B7-1E077BB6908D} = {1BE9AE12-EF2F-484A-80DD-A4D3D25075DA}
 		{7C6E0BD2-A5DE-4A5A-A74C-1937CB09439E} = {1BE9AE12-EF2F-484A-80DD-A4D3D25075DA}
+		{7B0C4246-AD82-41FD-89AB-E42211A64923} = {7B18A7AE-AAA6-495D-B5EF-0F5DD40963BD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C823B433-C78C-48FC-BF82-2A2A1150D32D}
