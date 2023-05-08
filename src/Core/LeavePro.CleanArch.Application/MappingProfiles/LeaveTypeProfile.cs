@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using LeavePro.CleanArch.Application.Features.LeaveType.Commands.CreateLeaveType;
+using LeavePro.CleanArch.Application.Features.LeaveType.Commands.UpdateLeaveType;
 using LeavePro.CleanArch.Application.Features.LeaveType.Queries.GetAllLeaveTypes;
 using LeavePro.CleanArch.Application.Features.LeaveType.Queries.GetLeaveTypeDetails;
 using LeavePro.CleanArch.Domain;
@@ -18,6 +19,7 @@ public class LeaveTypeProfile : Profile
         CreateMap<LeaveTypeDto, LeaveType>().ReverseMap();
         CreateMap<LeaveType, LeaveTypeDetailsDto>();
         CreateMap<CreateLeaveTypeCommand, LeaveType>();
+        CreateMap<UpdateLeaveTypeCommand, LeaveType>();
     }
 
 }
