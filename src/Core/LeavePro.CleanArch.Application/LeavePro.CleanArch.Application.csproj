@@ -16,4 +16,8 @@
     <ProjectReference Include="..\LeavePro.CleanArch.Domain\LeavePro.CleanArch.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\LeaveType\Commands\" />
+  </ItemGroup>
+
 </Project>

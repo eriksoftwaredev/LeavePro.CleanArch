@@ -10,8 +10,8 @@ namespace LeavePro.CleanArch.Application.Contracts.Persistence;
 
 public interface IRepository<TEntity> where TEntity : class
 {
-    Task<TEntity> GetAllAsync();
-    Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> predicate);
+    Task<List<TEntity>> GetAllAsync();
+    Task<List<TEntity>> GetAsync(Expression<Func<TEntity, bool>> predicate);
     Task<TEntity> GetByIdAsync(int id);
     Task<TEntity> CreateAsync(TEntity entity);
     Task<TEntity> UpdateAsync(TEntity entity);
