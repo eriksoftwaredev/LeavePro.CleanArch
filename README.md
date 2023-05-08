@@ -1,1 +1,1 @@
-# LeavePro.CleanArch
+# .NET Core Leave Management System
