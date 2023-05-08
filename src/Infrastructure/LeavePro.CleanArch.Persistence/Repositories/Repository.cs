@@ -2,10 +2,11 @@
 using LeavePro.CleanArch.Persistence.DatabaseContext;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using LeavePro.CleanArch.Domain.Common;
 
 namespace LeavePro.CleanArch.Persistence.Repositories;
 
-public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
 {
     protected readonly LmDbContext Context;
 
@@ -26,7 +27,7 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
 
     public async Task<TEntity> GetByIdAsync(int id)
     {
-        return await Context.Set<TEntity>().FindAsync(id);
+        return await Context.Set<TEntity>().AsNoTracking().FirstOrDefaultAsync(e=>e.Id==id);
     }
 
     public async Task<TEntity> CreateAsync(TEntity entity)

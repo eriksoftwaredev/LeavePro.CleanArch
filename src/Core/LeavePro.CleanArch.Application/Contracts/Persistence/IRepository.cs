@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using LeavePro.CleanArch.Domain.Common;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LeavePro.CleanArch.Application.Contracts.Persistence;
 
-public interface IRepository<TEntity> where TEntity : class
+public interface IRepository<TEntity> where TEntity : BaseEntity
 {
     Task<IReadOnlyList<TEntity>> GetAllAsync();
     Task<IReadOnlyList<TEntity>> GetAsync(Expression<Func<TEntity, bool>> predicate);
