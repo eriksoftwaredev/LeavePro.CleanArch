@@ -38,6 +38,12 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEnti
         return entity;
     }
 
+    public async Task CreateRangeAsync(IEnumerable<TEntity> entities)
+    {
+        await Context.AddRangeAsync(entities);
+        await Context.SaveChangesAsync();
+    }
+
     public async Task<TEntity> UpdateAsync(TEntity entity)
     {
         Context.Update(entity);

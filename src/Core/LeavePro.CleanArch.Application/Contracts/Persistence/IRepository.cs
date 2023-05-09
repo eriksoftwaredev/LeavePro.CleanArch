@@ -9,6 +9,7 @@ public interface IRepository<TEntity> where TEntity : BaseEntity
     Task<IReadOnlyList<TEntity>> GetAsync(Expression<Func<TEntity, bool>> predicate);
     Task<TEntity> GetByIdAsync(int id);
     Task<TEntity> CreateAsync(TEntity entity);
+    Task CreateRangeAsync(IEnumerable<TEntity> entities);
     Task<TEntity> UpdateAsync(TEntity entity);
     Task DeleteAsync(TEntity entity);
 }
