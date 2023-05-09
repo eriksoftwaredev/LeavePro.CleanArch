@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using LeavePro.CleanArch.Application.Contracts.Logging;
 using LeavePro.CleanArch.Application.Contracts.Persistence;
 using MediatR;
 
@@ -8,19 +9,25 @@ public class GetLeaveTypesQueryHandler : IRequestHandler<GetLeaveTypesQuery, Lis
 {
     private readonly IMapper _mapper;
     private readonly ILeaveTypeRepository _leaveTypeRepository;
+    private readonly IAppLogger<GetLeaveTypesQueryHandler> _logger;
 
-    public GetLeaveTypesQueryHandler(IMapper mapper, ILeaveTypeRepository leaveTypeRepository)
+    public GetLeaveTypesQueryHandler(IMapper mapper,
+        ILeaveTypeRepository leaveTypeRepository,
+        IAppLogger<GetLeaveTypesQueryHandler> logger)
     {
         _mapper = mapper;
         _leaveTypeRepository = leaveTypeRepository;
+        _logger = logger;
     }
 
     public async Task<List<LeaveTypeDto>> Handle(GetLeaveTypesQuery request, CancellationToken cancellationToken)
     {
         var leaveTypes = await _leaveTypeRepository.GetAllAsync();
 
-       var result= _mapper.Map<List<LeaveTypeDto>>(leaveTypes);
+        var result = _mapper.Map<List<LeaveTypeDto>>(leaveTypes);
 
-       return result;
+        _logger.LogInformation("Leave types were retrieved successfully");
+
+        return result;
     }
 }

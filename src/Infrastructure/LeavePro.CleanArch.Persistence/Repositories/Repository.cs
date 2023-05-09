@@ -57,4 +57,9 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEnti
         Context.Remove(entity);
         await Context.SaveChangesAsync();
     }
+
+    public async Task<bool> IsExist(int id)
+    {
+        return await Context.Set<TEntity>().AnyAsync(e => e.Id == id);
+    }
 }
