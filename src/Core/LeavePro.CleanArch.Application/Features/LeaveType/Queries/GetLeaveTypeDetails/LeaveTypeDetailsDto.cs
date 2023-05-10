@@ -2,9 +2,9 @@
 
 public class LeaveTypeDetailsDto
 {
-    public int Id { get; set; }
-    public string Name { get; set; } = string.Empty;
-    public int DefaultDays { get; set; }
-    public DateTime? CreatedDate { get; set; }
-    public DateTime? UpdatedDate { get; set; }
+    public int Id { get; init; }
+    public string Name { get; init; } = string.Empty;
+    public int DefaultDays { get; init; }
+    public DateTime? CreatedDate { get; init; }
+    public DateTime? UpdatedDate { get; init; }
 }

@@ -9,6 +9,6 @@ namespace LeavePro.CleanArch.Application.Features.LeaveType.Commands.CreateLeave
 
 public class CreateLeaveTypeCommand : IRequest<int>
 {
-    public string Name { get; set; } = string.Empty;
-    public int DefaultDays { get; set; }
+    public string Name { get; init; } = string.Empty;
+    public int DefaultDays { get; init; }
 }

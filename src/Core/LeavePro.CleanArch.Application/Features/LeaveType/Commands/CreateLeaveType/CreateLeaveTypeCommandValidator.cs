@@ -22,15 +22,15 @@ public class CreateLeaveTypeCommandValidator : AbstractValidator<CreateLeaveType
             .MaximumLength(255).WithMessage("{PropertyName} must be fewer than 255 character");
 
         RuleFor(p => p.DefaultDays)
-            .LessThan(100).WithMessage("{PropertyName} cannot exceed 100")
-            .GreaterThan(1).WithMessage("{PropertyName} cannot be less than 1");
+            .LessThanOrEqualTo(100).WithMessage("{PropertyName} cannot exceed 100")
+            .GreaterThanOrEqualTo(1).WithMessage("{PropertyName} cannot be less than 1");
 
         RuleFor(q => q)
-                .MustAsync(LeaveTypeNameUnique)
+                .MustAsync(LeaveTypeNameIsUnique)
                 .WithMessage("Leave type already exist");
     }
 
-    private async Task<bool> LeaveTypeNameUnique(CreateLeaveTypeCommand command, CancellationToken token)
+    private async Task<bool> LeaveTypeNameIsUnique(CreateLeaveTypeCommand command, CancellationToken token)
     {
         return await _leaveTypeRepository.IsLeaveTypeUnique(command.Name);
     }

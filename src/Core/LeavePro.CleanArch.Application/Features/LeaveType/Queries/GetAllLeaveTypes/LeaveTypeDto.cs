@@ -8,7 +8,7 @@ namespace LeavePro.CleanArch.Application.Features.LeaveType.Queries.GetAllLeaveT
 
 public class LeaveTypeDto
 {
-    public int Id { get; set; }
-    public string Name { get; set; } = string.Empty;
-    public int DefaultDays { get; set; }
+    public int Id { get; init; }
+    public string Name { get; init; } = string.Empty;
+    public int DefaultDays { get; init; }
 }

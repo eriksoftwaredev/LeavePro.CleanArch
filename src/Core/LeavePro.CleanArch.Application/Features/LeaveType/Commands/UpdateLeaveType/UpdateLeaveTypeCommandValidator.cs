@@ -14,7 +14,7 @@ public class UpdateLeaveTypeCommandValidator : AbstractValidator<UpdateLeaveType
 
         RuleFor(p => p.Id)
             .NotNull()
-            .MustAsync(LeaveTypeMustExist);
+            .MustAsync(LeaveTypeIsExist);
 
         RuleFor(p => p.Name)
             .NotEmpty().WithMessage("{PropertyName} is required")
@@ -26,8 +26,8 @@ public class UpdateLeaveTypeCommandValidator : AbstractValidator<UpdateLeaveType
         //    .WithMessage("Leave type name already exist");
 
         RuleFor(p => p.DefaultDays)
-            .LessThan(100).WithMessage("{PropertyName} cannot exceed 100")
-            .GreaterThan(1).WithMessage("{PropertyName} cannot be less than 1");
+            .LessThanOrEqualTo(100).WithMessage("{PropertyName} cannot exceed 100")
+            .GreaterThanOrEqualTo(1).WithMessage("{PropertyName} cannot be less than 1");
     }
 
     //private async Task<bool> LeaveTypeNameUniqueForUpdate(UpdateLeaveTypeCommand command, CancellationToken token)
@@ -35,7 +35,7 @@ public class UpdateLeaveTypeCommandValidator : AbstractValidator<UpdateLeaveType
     //    return await _leaveTypeRepository.IsLeaveTypeUniqueForUpdate();
     //}
 
-    private async Task<bool> LeaveTypeMustExist(int id, CancellationToken token)
+    private async Task<bool> LeaveTypeIsExist(int id, CancellationToken token)
     {
         return await _leaveTypeRepository.IsExist(id);
     }
