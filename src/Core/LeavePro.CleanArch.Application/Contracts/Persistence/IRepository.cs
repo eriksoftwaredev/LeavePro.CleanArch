@@ -12,5 +12,5 @@ public interface IRepository<TEntity> where TEntity : BaseEntity
     Task CreateRangeAsync(IEnumerable<TEntity> entities);
     Task<TEntity> UpdateAsync(TEntity entity);
     Task DeleteAsync(TEntity entity);
-    Task<bool> IsExist(int id);
+    Task<bool> Exists(int id);
 }

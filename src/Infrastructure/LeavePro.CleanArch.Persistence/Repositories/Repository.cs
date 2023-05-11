@@ -58,7 +58,7 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEnti
         await Context.SaveChangesAsync();
     }
 
-    public async Task<bool> IsExist(int id)
+    public async Task<bool> Exists(int id)
     {
         return await Context.Set<TEntity>().AnyAsync(e => e.Id == id);
     }

@@ -1,12 +1,11 @@
-﻿using System.Net;
+﻿using LeavePro.CleanArch.Application.Features.LeaveAllocation.Commands.DeleteLeaveAllocation;
+using LeavePro.CleanArch.Application.Features.LeaveAllocation.Queries.GetLeaveAllocationDetails;
+using LeavePro.CleanArch.Application.Features.LeaveAllocation.Queries.GetLeaveAllocations;
 using LeavePro.CleanArch.Application.Features.LeaveType.Commands.CreateLeaveType;
 using LeavePro.CleanArch.Application.Features.LeaveType.Commands.DeleteLeaveType;
 using LeavePro.CleanArch.Application.Features.LeaveType.Commands.UpdateLeaveType;
-using LeavePro.CleanArch.Application.Features.LeaveType.Queries.GetAllLeaveTypes;
-using LeavePro.CleanArch.Application.Features.LeaveType.Queries.GetLeaveTypeDetails;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -14,44 +13,43 @@ namespace LeavePro.CleanArch.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LeaveTypesController : ControllerBase
+    public class LeaveAllocationsController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public LeaveTypesController(IMediator mediator)
+        public LeaveAllocationsController(IMediator mediator)
         {
             _mediator = mediator;
         }
 
-        // GET: api/<LeaveTypesController>
+        // GET: api/<LeaveAllocationsController>
         [HttpGet]
-        public async Task<ActionResult<List<LeaveTypeDto>>> Get()
+        public async Task<ActionResult<List<LeaveAllocationDto>>> Get()
         {
-            var leaveTypes = await _mediator.Send(new GetLeaveTypesQuery());
+            var leaveAllocations = await _mediator.Send(new GetLeaveAllocationsQuery());
 
-            return Ok(leaveTypes);
+            return Ok(leaveAllocations);
         }
 
-        // GET api/<LeaveTypesController>/5
+        // GET api/<LeaveAllocationsController>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<LeaveTypeDetailsDto>> Get(int id)
+        public async Task<ActionResult<LeaveAllocationDetailsDto>> Get(int id)
         {
-            var leaveType = await _mediator.Send(new GetLeaveTypeDetailsQuery(id));
+            var leaveAllocation = await _mediator.Send(new GetLeaveAllocationWithDetailsQuery(id));
 
-            return Ok(leaveType);
+            return Ok(leaveAllocation);
         }
 
-        // POST api/<LeaveTypesController>
+        // POST api/<LeaveAllocationsController>
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] CreateLeaveTypeCommand request)
         {
-            var response = await _mediator.Send(request);
+            var result = await _mediator.Send(request);
 
-            return CreatedAtAction(nameof(Get), new { id = response });
-
+            return CreatedAtAction(nameof(Get), new { id = result });
         }
 
-        // PUT api/<LeaveTypesController>/5
+        // PUT api/<LeaveAllocationsController>/5
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -66,13 +64,13 @@ namespace LeavePro.CleanArch.API.Controllers
             return NoContent();
         }
 
-        // DELETE api/<LeaveTypesController>/5
+        // DELETE api/<LeaveAllocationsController>/5
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesDefaultResponseType]
         public async Task<ActionResult> Delete(int id)
         {
-            await _mediator.Send(new DeleteLeaveTypeCommand(id));
+            await _mediator.Send(new DeleteLeaveAllocationCommand(id));
 
             return NoContent();
         }
