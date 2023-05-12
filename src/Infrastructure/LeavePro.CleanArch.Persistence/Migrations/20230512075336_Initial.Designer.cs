@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LeavePro.CleanArch.Persistence.Migrations
 {
     [DbContext(typeof(LmDbContext))]
-    [Migration("20230509195659_Initial")]
+    [Migration("20230512075336_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -89,7 +89,7 @@ namespace LeavePro.CleanArch.Persistence.Migrations
                     b.Property<string>("RequestComment")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("RequestedDate")
+                    b.Property<DateTime>("RequestDate")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("StartDate")
@@ -135,10 +135,18 @@ namespace LeavePro.CleanArch.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2023, 5, 10, 0, 26, 59, 264, DateTimeKind.Local).AddTicks(8400),
+                            CreatedDate = new DateTime(2023, 5, 12, 12, 23, 36, 60, DateTimeKind.Local).AddTicks(5331),
                             DefaultDays = 7,
                             Name = "Vacation",
-                            UpdatedDate = new DateTime(2023, 5, 10, 0, 26, 59, 264, DateTimeKind.Local).AddTicks(8449)
+                            UpdatedDate = new DateTime(2023, 5, 12, 12, 23, 36, 60, DateTimeKind.Local).AddTicks(5499)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedDate = new DateTime(2023, 5, 12, 12, 23, 36, 60, DateTimeKind.Local).AddTicks(5509),
+                            DefaultDays = 1,
+                            Name = "Sick",
+                            UpdatedDate = new DateTime(2023, 5, 12, 12, 23, 36, 60, DateTimeKind.Local).AddTicks(5512)
                         });
                 });
 

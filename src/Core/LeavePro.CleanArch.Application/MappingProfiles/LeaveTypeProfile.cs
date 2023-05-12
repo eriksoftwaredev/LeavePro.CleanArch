@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using LeavePro.CleanArch.Application.Features.LeaveType.Commands.CreateLeaveType;
 using LeavePro.CleanArch.Application.Features.LeaveType.Commands.DeleteLeaveType;
 using LeavePro.CleanArch.Application.Features.LeaveType.Commands.UpdateLeaveType;

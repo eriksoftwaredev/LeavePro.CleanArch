@@ -10,7 +10,7 @@ public class LeaveRequest : BaseEntity
     public LeaveType? LeaveType { get; set; }
     public int LeaveTypeId { get; set; }
 
-    public DateTime RequestedDate { get; set; }
+    public DateTime RequestDate { get; set; }
     public string? RequestComment { get; set; }
 
     public bool? Approved { get; set; }

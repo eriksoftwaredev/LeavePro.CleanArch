@@ -21,6 +21,14 @@ public class LeaveTypeConfiguration : IEntityTypeConfiguration<LeaveType>
                 DefaultDays = 7,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now,
+            },
+            new LeaveType()
+            {
+                Id = 2,
+                Name = "Sick",
+                DefaultDays = 1,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
             }
         });
     }

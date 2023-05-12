@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace LeavePro.CleanArch.Persistence.Migrations
 {
     /// <inheritdoc />
@@ -60,7 +62,7 @@ namespace LeavePro.CleanArch.Persistence.Migrations
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LeaveTypeId = table.Column<int>(type: "int", nullable: false),
-                    RequestedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    RequestDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     RequestComment = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Approved = table.Column<bool>(type: "bit", nullable: true),
                     Cancelled = table.Column<bool>(type: "bit", nullable: false),
@@ -82,7 +84,11 @@ namespace LeavePro.CleanArch.Persistence.Migrations
             migrationBuilder.InsertData(
                 table: "LeaveTypes",
                 columns: new[] { "Id", "CreatedDate", "DefaultDays", "Name", "UpdatedDate" },
-                values: new object[] { 1, new DateTime(2023, 5, 10, 0, 26, 59, 264, DateTimeKind.Local).AddTicks(8400), 7, "Vacation", new DateTime(2023, 5, 10, 0, 26, 59, 264, DateTimeKind.Local).AddTicks(8449) });
+                values: new object[,]
+                {
+                    { 1, new DateTime(2023, 5, 12, 12, 23, 36, 60, DateTimeKind.Local).AddTicks(5331), 7, "Vacation", new DateTime(2023, 5, 12, 12, 23, 36, 60, DateTimeKind.Local).AddTicks(5499) },
+                    { 2, new DateTime(2023, 5, 12, 12, 23, 36, 60, DateTimeKind.Local).AddTicks(5509), 1, "Sick", new DateTime(2023, 5, 12, 12, 23, 36, 60, DateTimeKind.Local).AddTicks(5512) }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_LeaveAllocations_LeaveTypeId",

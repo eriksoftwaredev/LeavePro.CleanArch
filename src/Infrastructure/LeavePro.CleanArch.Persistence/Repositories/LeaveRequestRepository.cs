@@ -35,4 +35,20 @@ public class LeaveRequestRepository : Repository<LeaveRequest>, ILeaveRequestRep
             .AsNoTracking()
             .ToListAsync();
     }
+
+    public async Task Cancel(LeaveRequest leaveRequest)
+    {
+        // ToDo: Check If working
+        Context.LeaveRequests.Attach(leaveRequest);
+        leaveRequest.Cancelled = true;
+        await Context.SaveChangesAsync();
+    }
+
+    public async Task Approve(LeaveRequest leaveRequest)
+    {
+        // ToDo: Check If working
+        Context.LeaveRequests.Attach(leaveRequest);
+        leaveRequest.Approved = true;
+        await Context.SaveChangesAsync();
+    }
 }
