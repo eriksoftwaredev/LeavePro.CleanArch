@@ -1,4 +1,6 @@
-﻿using LeavePro.CleanArch.Application.Features.LeaveAllocation.Commands.DeleteLeaveAllocation;
+﻿using LeavePro.CleanArch.Application.Features.LeaveAllocation.Commands.CreateLeaveAllocation;
+using LeavePro.CleanArch.Application.Features.LeaveAllocation.Commands.DeleteLeaveAllocation;
+using LeavePro.CleanArch.Application.Features.LeaveAllocation.Commands.UpdateLeaveAllocation;
 using LeavePro.CleanArch.Application.Features.LeaveAllocation.Queries.GetLeaveAllocationDetails;
 using LeavePro.CleanArch.Application.Features.LeaveAllocation.Queries.GetLeaveAllocations;
 using LeavePro.CleanArch.Application.Features.LeaveType.Commands.CreateLeaveType;
@@ -42,7 +44,7 @@ namespace LeavePro.CleanArch.API.Controllers
 
         // POST api/<LeaveAllocationsController>
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] CreateLeaveTypeCommand request)
+        public async Task<ActionResult> Post([FromBody] CreateLeaveAllocationCommand request)
         {
             var result = await _mediator.Send(request);
 
@@ -54,7 +56,7 @@ namespace LeavePro.CleanArch.API.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult> Put(int id, [FromBody] UpdateLeaveTypeCommand request)
+        public async Task<ActionResult> Put(int id, [FromBody] UpdateLeaveAllocationCommand request)
         {
             if (id != request.Id)
                 return BadRequest();
