@@ -31,6 +31,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeavePro.CleanArch.Integrat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeavePro.CleanArch.BlazorUI", "src\UI\LeavePro.CleanArch.BlazorUI\LeavePro.CleanArch.BlazorUI.csproj", "{05489812-8D00-4C94-8039-BAD4BD98D22A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeavePro.CleanArch.Identity", "src\Infrastructure\LeavePro.CleanArch.Identity\LeavePro.CleanArch.Identity.csproj", "{DE6541B8-E803-4CE9-AC67-39135F3F5E07}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{05489812-8D00-4C94-8039-BAD4BD98D22A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05489812-8D00-4C94-8039-BAD4BD98D22A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05489812-8D00-4C94-8039-BAD4BD98D22A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE6541B8-E803-4CE9-AC67-39135F3F5E07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE6541B8-E803-4CE9-AC67-39135F3F5E07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE6541B8-E803-4CE9-AC67-39135F3F5E07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE6541B8-E803-4CE9-AC67-39135F3F5E07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -86,6 +92,7 @@ Global
 		{DCAC2FFF-C376-4954-9863-D62C6F6588D9} = {3870D532-7D3B-43EF-9C4F-C720540E80A0}
 		{BDDD18B9-3EAC-445B-A321-66EC9A697E49} = {67884A00-EDC6-4F06-9CEF-9643D7EE8F45}
 		{05489812-8D00-4C94-8039-BAD4BD98D22A} = {AE006386-987C-4C0F-9B80-01AE92DB658E}
+		{DE6541B8-E803-4CE9-AC67-39135F3F5E07} = {7B18A7AE-AAA6-495D-B5EF-0F5DD40963BD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C823B433-C78C-48FC-BF82-2A2A1150D32D}
