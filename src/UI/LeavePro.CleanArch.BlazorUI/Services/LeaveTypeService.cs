@@ -51,6 +51,7 @@ public class LeaveTypeService : BaseHttpService, ILeaveTypeService
         }
         catch (ApiException ex)
         {
+            Console.WriteLine($"ssss: {ex.Message} innere: {ex.InnerException?.Message}");
             return ConvertApiExceptions<Guid>(ex);
         }
     }

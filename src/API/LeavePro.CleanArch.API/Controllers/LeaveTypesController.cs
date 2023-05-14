@@ -15,7 +15,7 @@ namespace LeavePro.CleanArch.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class LeaveTypesController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -45,6 +45,9 @@ namespace LeavePro.CleanArch.API.Controllers
 
         // POST api/<LeaveTypesController>
         [HttpPost]
+        [ProducesResponseType(201)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> Post([FromBody] CreateLeaveTypeCommand request)
         {
             var response = await _mediator.Send(request);
