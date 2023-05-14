@@ -27,10 +27,10 @@ public class LmDbContext : DbContext
         foreach (var entityEntry in base.ChangeTracker.Entries<BaseEntity>()
                      .Where(q => q.State == EntityState.Added || q.State == EntityState.Modified))
         {
-            entityEntry.Entity.UpdatedDate = DateTime.Now;
+            entityEntry.Entity.UpdatedDate = DateTime.UtcNow;
 
             if (entityEntry.State == EntityState.Added)
-                entityEntry.Entity.CreatedDate = DateTime.Now;
+                entityEntry.Entity.CreatedDate = DateTime.UtcNow;
         }
 
         return base.SaveChangesAsync(cancellationToken);

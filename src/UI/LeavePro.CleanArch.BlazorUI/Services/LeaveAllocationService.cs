@@ -1,11 +1,13 @@
-﻿using LeavePro.CleanArch.BlazorUI.Contracts;
+﻿using Blazored.LocalStorage;
+using LeavePro.CleanArch.BlazorUI.Contracts;
 using LeavePro.CleanArch.BlazorUI.Services.Base;
 
 namespace LeavePro.CleanArch.BlazorUI.Services;
 
 public class LeaveAllocationService : BaseHttpService, ILeaveAllocationService
 {
-    public LeaveAllocationService(IClient client) : base(client)
+    public LeaveAllocationService(IClient client, ILocalStorageService localStorageService)
+        : base(client, localStorageService)
     {
     }
 

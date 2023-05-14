@@ -40,7 +40,7 @@ public class CreateLeaveRequestCommandHandler : IRequestHandler<CreateLeaveReque
 
         var leaveRequestToCreate = _mapper.Map<Domain.LeaveRequest>(request);
 
-        leaveRequestToCreate.RequestDate = DateTime.Now;
+        leaveRequestToCreate.RequestDate = DateTime.UtcNow;
 
         await _leaveRequestRepository.CreateAsync(leaveRequestToCreate);
 
