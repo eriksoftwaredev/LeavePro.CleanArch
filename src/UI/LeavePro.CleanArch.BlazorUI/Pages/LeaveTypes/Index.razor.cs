@@ -1,4 +1,5 @@
-﻿using LeavePro.CleanArch.BlazorUI.Contracts;
+﻿using Blazored.Toast.Services;
+using LeavePro.CleanArch.BlazorUI.Contracts;
 using LeavePro.CleanArch.BlazorUI.Models.LeaveTypes;
 using LeavePro.CleanArch.BlazorUI.Services;
 using Microsoft.AspNetCore.Components;
@@ -10,6 +11,7 @@ namespace LeavePro.CleanArch.BlazorUI.Pages.LeaveTypes
         [Inject] public NavigationManager NavigationManager { get; set; }
         [Inject] public ILeaveTypeService LeaveTypeService { get; set; }
         [Inject] public ILeaveAllocationService LeaveAllocationService { get; set; }
+        [Inject] IToastService toastService { get; set; }
         public List<LeaveTypeVM> LeaveTypes { get; private set; }
         public string Message { get; set; } = String.Empty;
 
@@ -38,7 +40,8 @@ namespace LeavePro.CleanArch.BlazorUI.Pages.LeaveTypes
             var response = await LeaveTypeService.DeleteLeaveType(id);
             if (response.Success)
             {
-                StateHasChanged();
+                toastService.ShowSuccess("Leave Type deleted Successfully");
+                await OnInitializedAsync();
             }
             else
             {

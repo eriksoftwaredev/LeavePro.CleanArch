@@ -12,6 +12,9 @@ public class LeaveTypeConfiguration : IEntityTypeConfiguration<LeaveType>
             .IsRequired()
             .HasMaxLength(255);
 
+        builder.HasIndex(l => l.Name)
+            .IsUnique();
+
         builder.HasData(new List<LeaveType>
         {
             new LeaveType()
