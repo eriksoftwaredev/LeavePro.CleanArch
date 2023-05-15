@@ -3,9 +3,6 @@ using LeavePro.CleanArch.Application.Features.LeaveAllocation.Commands.DeleteLea
 using LeavePro.CleanArch.Application.Features.LeaveAllocation.Commands.UpdateLeaveAllocation;
 using LeavePro.CleanArch.Application.Features.LeaveAllocation.Queries.GetLeaveAllocationDetails;
 using LeavePro.CleanArch.Application.Features.LeaveAllocation.Queries.GetLeaveAllocations;
-using LeavePro.CleanArch.Application.Features.LeaveType.Commands.CreateLeaveType;
-using LeavePro.CleanArch.Application.Features.LeaveType.Commands.DeleteLeaveType;
-using LeavePro.CleanArch.Application.Features.LeaveType.Commands.UpdateLeaveType;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -44,6 +41,9 @@ namespace LeavePro.CleanArch.API.Controllers
 
         // POST api/<LeaveAllocationsController>
         [HttpPost]
+        [ProducesResponseType(201)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> Post([FromBody] CreateLeaveAllocationCommand request)
         {
             var result = await _mediator.Send(request);

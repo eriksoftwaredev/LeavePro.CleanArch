@@ -1,5 +1,4 @@
-﻿using System.Net;
-using LeavePro.CleanArch.Application.Features.LeaveType.Commands.CreateLeaveType;
+﻿using LeavePro.CleanArch.Application.Features.LeaveType.Commands.CreateLeaveType;
 using LeavePro.CleanArch.Application.Features.LeaveType.Commands.DeleteLeaveType;
 using LeavePro.CleanArch.Application.Features.LeaveType.Commands.UpdateLeaveType;
 using LeavePro.CleanArch.Application.Features.LeaveType.Queries.GetAllLeaveTypes;
@@ -7,7 +6,6 @@ using LeavePro.CleanArch.Application.Features.LeaveType.Queries.GetLeaveTypeDeta
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -15,7 +13,7 @@ namespace LeavePro.CleanArch.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class LeaveTypesController : ControllerBase
     {
         private readonly IMediator _mediator;

@@ -25,7 +25,6 @@ namespace LeavePro.CleanArch.BlazorUI.Pages.LeaveTypes
                 toastService.ShowToast(ToastLevel.Info, "Test");
                 _navManager.NavigateTo("/leavetypes/");
             }
-            Console.WriteLine($"_client.CreateLeaveType response: {response.ValidationErrors}");
             Message = response.Message;
         }
     }
